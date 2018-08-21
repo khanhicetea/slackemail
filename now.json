@@ -1,0 +1,12 @@
+{
+    "env": {
+        "SECRET_KEY": "@slackemail-secret-key",
+        "SMTP_HOST": "@slackemail-smtp-host",
+        "SMTP_PORT": "@slackemail-smtp-port",
+        "SMTP_ENCRYPT": "@slackemail-smtp-encrypt",
+        "SMTP_USER": "@slackemail-smtp-user",
+        "SMTP_PASSWORD": "@slackemail-smtp-password",
+        "SMTP_FROM": "@slackemail-smtp-from",
+        "SMTP_TO": "@slackemail-smtp-to"
+    }
+}
