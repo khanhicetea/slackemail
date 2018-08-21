@@ -23,6 +23,7 @@ const SMTP_ENCRYPT = process.env.SMTP_ENCRYPT || 'tls';
 const SMTP_USER = process.env.SMTP_USER || '';
 const SMTP_PASSWORD = process.env.SMTP_PASSWORD || '';
 const SMTP_FROM = process.env.SMTP_FROM || '';
+const SMTP_SENDER = process.env.SMTP_SENDER || '';
 const SMTP_TO = process.env.SMTP_TO || '';
 
 const app = express();
@@ -55,8 +56,9 @@ app.post('/send/:app/:signature', function(req, res) {
 
   const now = moment().format('DD-MM-YY HH:mm');
   const body = req.body.text || req.rawBody;
+  const from = SMTP_SENDER ? util.format('"%s" %s', SMTP_SENDER, SMTP_FROM) : SMTP_FROM;
   const mailOptions = {
-    from: SMTP_FROM,
+    from: from,
     to: SMTP_TO,
     subject: util.format('[%s] New message from #%s', now, app),
     text: body

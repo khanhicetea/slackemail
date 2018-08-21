@@ -7,6 +7,7 @@
         "SMTP_USER": "@slackemail-smtp-user",
         "SMTP_PASSWORD": "@slackemail-smtp-password",
         "SMTP_FROM": "@slackemail-smtp-from",
+        "SMTP_SENDER": "@slackemail-smtp-sender",
         "SMTP_TO": "@slackemail-smtp-to"
     }
 }
