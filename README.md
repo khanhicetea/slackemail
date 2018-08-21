@@ -17,6 +17,7 @@ Then open **http://localhost:3000** to try a shot !
 Update the environment variables :
 
 ```bash
+TIMEZONE=UTC
 SECRET_KEY=HardToGuest
 SMTP_HOST=
 SMTP_PORT=587
