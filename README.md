@@ -14,6 +14,19 @@ Then open **http://localhost:3000** to try a shot !
 
 ## Install & Start
 
+Update the environment variables :
+
+```bash
+SECRET_KEY=HardToGuest
+SMTP_HOST=
+SMTP_PORT=587
+SMTP_ENCRYPT=tls        
+SMTP_USER=              
+SMTP_PASSWORD=
+SMTP_FROM=
+SMTP_TO=
+```
+
 ```bash
 $ npm install
 $ npm start
@@ -23,6 +36,20 @@ $ npm start
 
 ```bash
 $ now
+```
+
+## Webhook Endpoint
+
+Endpoint : **https://[slackemail-domain]/send/[app_name]/[hmac_signature]**
+
+- **slackemail-domain** : your SlackEmail hostname
+- **app_name** : your app name, will be in title of email
+- **hmac_signature** : HMAC SHA256 Signature of your **app_name** based on env **SECRET_KEY**, prevent someone guest your endpoint
+
+## Example CURL
+
+```bash
+$ curl -X POST -H 'Content-type: application/json' --data '{"text":"This is a line of text.\nAnd this is another one."}' "https://[slackemail-domain]/send/[app_name]/[hmac_signature]"
 ```
 
 ## Contributors
