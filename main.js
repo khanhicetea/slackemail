@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const crypto = require("crypto");
 const util = require('util');
 const nodemailer = require('nodemailer');
-const moment = require('moment');
+const moment = require('moment-timezone');
 
 const checkSignature = function(value, sign, secret) {
   const hmac = crypto.createHmac("sha256", secret);
@@ -16,6 +16,7 @@ const rawBodySaver = function (req, res, buf, encoding) {
   }
 }
 
+const TIMEZONE = process.env.TIMEZONE || 'UTC';
 const SECRET_KEY = process.env.SECRET_KEY || '';
 const SMTP_HOST = process.env.SMTP_HOST || 'smtp.gmail.com';
 const SMTP_PORT = parseInt(process.env.SMTP_PORT || 587);
@@ -54,7 +55,7 @@ app.post('/send/:app/:signature', function(req, res) {
     }
   });
 
-  const now = moment().format('DD-MM-YY HH:mm');
+  const now = moment().tz(TIMEZONE).format('DD-MM-YY HH:mm');
   const body = req.body.text || req.rawBody;
   const from = SMTP_SENDER ? util.format('"%s" %s', SMTP_SENDER, SMTP_FROM) : SMTP_FROM;
   const mailOptions = {

@@ -1,5 +1,6 @@
 {
     "env": {
+        "TIMEZONE": "@slackemail-timezone",
         "SECRET_KEY": "@slackemail-secret-key",
         "SMTP_HOST": "@slackemail-smtp-host",
         "SMTP_PORT": "@slackemail-smtp-port",
